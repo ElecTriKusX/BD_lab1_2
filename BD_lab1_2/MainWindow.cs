@@ -34,7 +34,137 @@ namespace BD_lab1_2
 
         private void button3_Click(object sender, EventArgs e)
         {
+            DataSet_main.EmployeesRow selectedEmployee = null;
 
+            // Если есть выбранный работник в таблице работников, используем его
+            if (dataGridView_Employee.CurrentRow != null)
+            {
+                selectedEmployee = ((DataRowView)dataGridView_Employee.CurrentRow.DataBoundItem).Row as DataSet_main.EmployeesRow;
+            }
+
+            using (AddJobForm addForm = new AddJobForm(dataSet_main, selectedEmployee))
+            {
+                if (addForm.ShowDialog() == DialogResult.OK)
+                {
+                    jobBindingSource.ResetBindings(false);
+                }
+            }
+        }
+
+        private void button_EmployeeAdd_Click(object sender, EventArgs e)
+        {
+            using (AddEmployeeForm addForm = new AddEmployeeForm(dataSet_main))
+            {
+                if (addForm.ShowDialog() == DialogResult.OK)
+                {
+                    employeesBindingSource.ResetBindings(false);
+                }
+            }
+        }
+
+        private void button_EmployeeDelete_Click(object sender, EventArgs e)
+        {
+            if (dataGridView_Employee.CurrentRow == null)
+            {
+                MessageBox.Show("Выберите работника для удаления!", "Информация",
+                              MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            // Получаем выбранную строку
+            var selectedRow = dataGridView_Employee.CurrentRow;
+            var employee = ((DataRowView)selectedRow.DataBoundItem).Row as DataSet_main.EmployeesRow;
+
+            if (employee != null)
+            {
+                using (DeleteEmployeeForm deleteForm = new DeleteEmployeeForm(dataSet_main, employee))
+                {
+                    if (deleteForm.ShowDialog() == DialogResult.OK)
+                    {
+                        employeesBindingSource.ResetBindings(false);
+                    }
+                }
+            }
+        }
+
+        private void button_EmployeeEdit_Click(object sender, EventArgs e)
+        {
+            if (dataGridView_Employee.CurrentRow == null)
+            {
+                MessageBox.Show("Выберите работника для редактирования!", "Информация",
+                              MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            // Получаем выбранную строку
+            var selectedRow = dataGridView_Employee.CurrentRow;
+            var employee = ((DataRowView)selectedRow.DataBoundItem).Row as DataSet_main.EmployeesRow;
+
+            if (employee != null)
+            {
+                using (EditEmployeeForm editForm = new EditEmployeeForm(dataSet_main, employee))
+                {
+                    if (editForm.ShowDialog() == DialogResult.OK)
+                    {
+                        employeesBindingSource.ResetBindings(false);
+                    }
+                }
+            }
+        }
+
+        private void MainWindow_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button_JobDelete_Click(object sender, EventArgs e)
+        {
+            if (dataGridView_Job.CurrentRow == null)
+            {
+                MessageBox.Show("Выберите работу для удаления!", "Информация",
+                              MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            // Получаем выбранную строку
+            var selectedRow = dataGridView_Job.CurrentRow;
+            var job = ((DataRowView)selectedRow.DataBoundItem).Row as DataSet_main.JobRow;
+
+            if (job != null)
+            {
+                using (DeleteJobForm deleteForm = new DeleteJobForm(dataSet_main, job))
+                {
+                    if (deleteForm.ShowDialog() == DialogResult.OK)
+                    {
+                        jobBindingSource.ResetBindings(false);
+                    }
+                }
+            }
+        }
+
+        private void button_JobEdit_Click(object sender, EventArgs e)
+        {
+            if (dataGridView_Job.CurrentRow == null)
+            {
+                MessageBox.Show("Выберите работу для редактирования!", "Информация",
+                              MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            // Получаем выбранную строку
+            var selectedRow = dataGridView_Job.CurrentRow;
+            var job = ((DataRowView)selectedRow.DataBoundItem).Row as DataSet_main.JobRow;
+
+            if (job != null)
+            {
+                using (EditJobForm editForm = new EditJobForm(dataSet_main, job))
+                {
+                    if (editForm.ShowDialog() == DialogResult.OK)
+                    {
+                        jobBindingSource.ResetBindings(false);
+                    }
+                }
+            }
         }
     }
 }
