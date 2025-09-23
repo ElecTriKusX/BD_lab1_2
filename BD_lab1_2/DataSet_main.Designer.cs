@@ -26,7 +26,7 @@ namespace BD_lab1_2 {
         
         private EmployeesDataTable tableEmployees;
         
-        private JobDataTable tableJob;
+        private JobsDataTable tableJobs;
         
         private global::System.Data.DataRelation relationFK_Employees_Job;
         
@@ -61,8 +61,8 @@ namespace BD_lab1_2 {
                 if ((ds.Tables["Employees"] != null)) {
                     base.Tables.Add(new EmployeesDataTable(ds.Tables["Employees"]));
                 }
-                if ((ds.Tables["Job"] != null)) {
-                    base.Tables.Add(new JobDataTable(ds.Tables["Job"]));
+                if ((ds.Tables["Jobs"] != null)) {
+                    base.Tables.Add(new JobsDataTable(ds.Tables["Jobs"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -96,9 +96,9 @@ namespace BD_lab1_2 {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public JobDataTable Job {
+        public JobsDataTable Jobs {
             get {
-                return this.tableJob;
+                return this.tableJobs;
             }
         }
         
@@ -172,8 +172,8 @@ namespace BD_lab1_2 {
                 if ((ds.Tables["Employees"] != null)) {
                     base.Tables.Add(new EmployeesDataTable(ds.Tables["Employees"]));
                 }
-                if ((ds.Tables["Job"] != null)) {
-                    base.Tables.Add(new JobDataTable(ds.Tables["Job"]));
+                if ((ds.Tables["Jobs"] != null)) {
+                    base.Tables.Add(new JobsDataTable(ds.Tables["Jobs"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -214,10 +214,10 @@ namespace BD_lab1_2 {
                     this.tableEmployees.InitVars();
                 }
             }
-            this.tableJob = ((JobDataTable)(base.Tables["Job"]));
+            this.tableJobs = ((JobsDataTable)(base.Tables["Jobs"]));
             if ((initTable == true)) {
-                if ((this.tableJob != null)) {
-                    this.tableJob.InitVars();
+                if ((this.tableJobs != null)) {
+                    this.tableJobs.InitVars();
                 }
             }
             this.relationFK_Employees_Job = this.Relations["FK_Employees_Job"];
@@ -233,19 +233,19 @@ namespace BD_lab1_2 {
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableEmployees = new EmployeesDataTable();
             base.Tables.Add(this.tableEmployees);
-            this.tableJob = new JobDataTable();
-            base.Tables.Add(this.tableJob);
+            this.tableJobs = new JobsDataTable();
+            base.Tables.Add(this.tableJobs);
             global::System.Data.ForeignKeyConstraint fkc;
             fkc = new global::System.Data.ForeignKeyConstraint("FK_Employees_Job", new global::System.Data.DataColumn[] {
                         this.tableEmployees.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableJob.EmployeeIDColumn});
-            this.tableJob.Constraints.Add(fkc);
+                        this.tableJobs.EmployeeIDColumn});
+            this.tableJobs.Constraints.Add(fkc);
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
             this.relationFK_Employees_Job = new global::System.Data.DataRelation("FK_Employees_Job", new global::System.Data.DataColumn[] {
                         this.tableEmployees.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableJob.EmployeeIDColumn}, false);
+                        this.tableJobs.EmployeeIDColumn}, false);
             this.Relations.Add(this.relationFK_Employees_Job);
         }
         
@@ -257,7 +257,7 @@ namespace BD_lab1_2 {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private bool ShouldSerializeJob() {
+        private bool ShouldSerializeJobs() {
             return false;
         }
         
@@ -320,7 +320,7 @@ namespace BD_lab1_2 {
         public delegate void EmployeesRowChangeEventHandler(object sender, EmployeesRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public delegate void JobRowChangeEventHandler(object sender, JobRowChangeEvent e);
+        public delegate void JobsRowChangeEventHandler(object sender, JobsRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -459,7 +459,7 @@ namespace BD_lab1_2 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public EmployeesRow AddEmployeesRow(string ID, string FullName, string BirthDate, string INN, string PensionCertificateNumber, string PassportData) {
+            public EmployeesRow AddEmployeesRow(int ID, string FullName, System.DateTime BirthDate, string INN, string PensionCertificateNumber, string PassportData) {
                 EmployeesRow rowEmployeesRow = ((EmployeesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ID,
@@ -501,11 +501,11 @@ namespace BD_lab1_2 {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             private void InitClass() {
-                this.columnID = new global::System.Data.DataColumn("ID", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnID);
                 this.columnFullName = new global::System.Data.DataColumn("FullName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFullName);
-                this.columnBirthDate = new global::System.Data.DataColumn("BirthDate", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnBirthDate = new global::System.Data.DataColumn("BirthDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnBirthDate);
                 this.columnINN = new global::System.Data.DataColumn("INN", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnINN);
@@ -515,7 +515,13 @@ namespace BD_lab1_2 {
                 base.Columns.Add(this.columnPassportData);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, false));
+                this.columnID.AllowDBNull = false;
                 this.columnID.Unique = true;
+                this.columnFullName.AllowDBNull = false;
+                this.columnBirthDate.AllowDBNull = false;
+                this.columnINN.AllowDBNull = false;
+                this.columnPensionCertificateNumber.AllowDBNull = false;
+                this.columnPassportData.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -647,7 +653,7 @@ namespace BD_lab1_2 {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class JobDataTable : global::System.Data.TypedTableBase<JobRow> {
+        public partial class JobsDataTable : global::System.Data.TypedTableBase<JobsRow> {
             
             private global::System.Data.DataColumn columnID;
             
@@ -661,8 +667,8 @@ namespace BD_lab1_2 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public JobDataTable() {
-                this.TableName = "Job";
+            public JobsDataTable() {
+                this.TableName = "Jobs";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -670,7 +676,7 @@ namespace BD_lab1_2 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal JobDataTable(global::System.Data.DataTable table) {
+            internal JobsDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -687,7 +693,7 @@ namespace BD_lab1_2 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected JobDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected JobsDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -743,36 +749,36 @@ namespace BD_lab1_2 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public JobRow this[int index] {
+            public JobsRow this[int index] {
                 get {
-                    return ((JobRow)(this.Rows[index]));
+                    return ((JobsRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event JobRowChangeEventHandler JobRowChanging;
+            public event JobsRowChangeEventHandler JobsRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event JobRowChangeEventHandler JobRowChanged;
+            public event JobsRowChangeEventHandler JobsRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event JobRowChangeEventHandler JobRowDeleting;
+            public event JobsRowChangeEventHandler JobsRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event JobRowChangeEventHandler JobRowDeleted;
+            public event JobsRowChangeEventHandler JobsRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void AddJobRow(JobRow row) {
+            public void AddJobsRow(JobsRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public JobRow AddJobRow(string ID, EmployeesRow parentEmployeesRowByFK_Employees_Job, string StartDate, string EndDate, string Description) {
-                JobRow rowJobRow = ((JobRow)(this.NewRow()));
+            public JobsRow AddJobsRow(EmployeesRow parentEmployeesRowByFK_Employees_Job, System.DateTime StartDate, System.DateTime EndDate, string Description) {
+                JobsRow rowJobsRow = ((JobsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        ID,
+                        null,
                         null,
                         StartDate,
                         EndDate,
@@ -780,15 +786,15 @@ namespace BD_lab1_2 {
                 if ((parentEmployeesRowByFK_Employees_Job != null)) {
                     columnValuesArray[1] = parentEmployeesRowByFK_Employees_Job[0];
                 }
-                rowJobRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowJobRow);
-                return rowJobRow;
+                rowJobsRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowJobsRow);
+                return rowJobsRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                JobDataTable cln = ((JobDataTable)(base.Clone()));
+                JobsDataTable cln = ((JobsDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -796,7 +802,7 @@ namespace BD_lab1_2 {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new JobDataTable();
+                return new JobsDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -812,42 +818,47 @@ namespace BD_lab1_2 {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             private void InitClass() {
-                this.columnID = new global::System.Data.DataColumn("ID", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnID);
-                this.columnEmployeeID = new global::System.Data.DataColumn("EmployeeID", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnEmployeeID = new global::System.Data.DataColumn("EmployeeID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEmployeeID);
-                this.columnStartDate = new global::System.Data.DataColumn("StartDate", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnStartDate = new global::System.Data.DataColumn("StartDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnStartDate);
-                this.columnEndDate = new global::System.Data.DataColumn("EndDate", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnEndDate = new global::System.Data.DataColumn("EndDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEndDate);
                 this.columnDescription = new global::System.Data.DataColumn("Description", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDescription);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnID}, false));
+                this.columnID.AutoIncrement = true;
+                this.columnID.AllowDBNull = false;
+                this.columnID.Unique = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public JobRow NewJobRow() {
-                return ((JobRow)(this.NewRow()));
+            public JobsRow NewJobsRow() {
+                return ((JobsRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new JobRow(builder);
+                return new JobsRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(JobRow);
+                return typeof(JobsRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.JobRowChanged != null)) {
-                    this.JobRowChanged(this, new JobRowChangeEvent(((JobRow)(e.Row)), e.Action));
+                if ((this.JobsRowChanged != null)) {
+                    this.JobsRowChanged(this, new JobsRowChangeEvent(((JobsRow)(e.Row)), e.Action));
                 }
             }
             
@@ -855,8 +866,8 @@ namespace BD_lab1_2 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.JobRowChanging != null)) {
-                    this.JobRowChanging(this, new JobRowChangeEvent(((JobRow)(e.Row)), e.Action));
+                if ((this.JobsRowChanging != null)) {
+                    this.JobsRowChanging(this, new JobsRowChangeEvent(((JobsRow)(e.Row)), e.Action));
                 }
             }
             
@@ -864,8 +875,8 @@ namespace BD_lab1_2 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.JobRowDeleted != null)) {
-                    this.JobRowDeleted(this, new JobRowChangeEvent(((JobRow)(e.Row)), e.Action));
+                if ((this.JobsRowDeleted != null)) {
+                    this.JobsRowDeleted(this, new JobsRowChangeEvent(((JobsRow)(e.Row)), e.Action));
                 }
             }
             
@@ -873,14 +884,14 @@ namespace BD_lab1_2 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.JobRowDeleting != null)) {
-                    this.JobRowDeleting(this, new JobRowChangeEvent(((JobRow)(e.Row)), e.Action));
+                if ((this.JobsRowDeleting != null)) {
+                    this.JobsRowDeleting(this, new JobsRowChangeEvent(((JobsRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void RemoveJobRow(JobRow row) {
+            public void RemoveJobsRow(JobsRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -907,7 +918,7 @@ namespace BD_lab1_2 {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "JobDataTable";
+                attribute2.FixedValue = "JobsDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -964,14 +975,9 @@ namespace BD_lab1_2 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string ID {
+            public int ID {
                 get {
-                    try {
-                        return ((string)(this[this.tableEmployees.IDColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'ID\' в таблице \'Employees\' равно DBNull.", e);
-                    }
+                    return ((int)(this[this.tableEmployees.IDColumn]));
                 }
                 set {
                     this[this.tableEmployees.IDColumn] = value;
@@ -982,12 +988,7 @@ namespace BD_lab1_2 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string FullName {
                 get {
-                    try {
-                        return ((string)(this[this.tableEmployees.FullNameColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'FullName\' в таблице \'Employees\' равно DBNull.", e);
-                    }
+                    return ((string)(this[this.tableEmployees.FullNameColumn]));
                 }
                 set {
                     this[this.tableEmployees.FullNameColumn] = value;
@@ -996,14 +997,9 @@ namespace BD_lab1_2 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string BirthDate {
+            public System.DateTime BirthDate {
                 get {
-                    try {
-                        return ((string)(this[this.tableEmployees.BirthDateColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'BirthDate\' в таблице \'Employees\' равно DBNull.", e);
-                    }
+                    return ((global::System.DateTime)(this[this.tableEmployees.BirthDateColumn]));
                 }
                 set {
                     this[this.tableEmployees.BirthDateColumn] = value;
@@ -1014,12 +1010,7 @@ namespace BD_lab1_2 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string INN {
                 get {
-                    try {
-                        return ((string)(this[this.tableEmployees.INNColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'INN\' в таблице \'Employees\' равно DBNull.", e);
-                    }
+                    return ((string)(this[this.tableEmployees.INNColumn]));
                 }
                 set {
                     this[this.tableEmployees.INNColumn] = value;
@@ -1030,13 +1021,7 @@ namespace BD_lab1_2 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string PensionCertificateNumber {
                 get {
-                    try {
-                        return ((string)(this[this.tableEmployees.PensionCertificateNumberColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'PensionCertificateNumber\' в таблице \'Employees\' равно DBNul" +
-                                "l.", e);
-                    }
+                    return ((string)(this[this.tableEmployees.PensionCertificateNumberColumn]));
                 }
                 set {
                     this[this.tableEmployees.PensionCertificateNumberColumn] = value;
@@ -1047,12 +1032,7 @@ namespace BD_lab1_2 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string PassportData {
                 get {
-                    try {
-                        return ((string)(this[this.tableEmployees.PassportDataColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'PassportData\' в таблице \'Employees\' равно DBNull.", e);
-                    }
+                    return ((string)(this[this.tableEmployees.PassportDataColumn]));
                 }
                 set {
                     this[this.tableEmployees.PassportDataColumn] = value;
@@ -1061,84 +1041,12 @@ namespace BD_lab1_2 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsIDNull() {
-                return this.IsNull(this.tableEmployees.IDColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetIDNull() {
-                this[this.tableEmployees.IDColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsFullNameNull() {
-                return this.IsNull(this.tableEmployees.FullNameColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetFullNameNull() {
-                this[this.tableEmployees.FullNameColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsBirthDateNull() {
-                return this.IsNull(this.tableEmployees.BirthDateColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetBirthDateNull() {
-                this[this.tableEmployees.BirthDateColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsINNNull() {
-                return this.IsNull(this.tableEmployees.INNColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetINNNull() {
-                this[this.tableEmployees.INNColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsPensionCertificateNumberNull() {
-                return this.IsNull(this.tableEmployees.PensionCertificateNumberColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetPensionCertificateNumberNull() {
-                this[this.tableEmployees.PensionCertificateNumberColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsPassportDataNull() {
-                return this.IsNull(this.tableEmployees.PassportDataColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetPassportDataNull() {
-                this[this.tableEmployees.PassportDataColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public JobRow[] GetJobRows() {
+            public JobsRow[] GetJobsRows() {
                 if ((this.Table.ChildRelations["FK_Employees_Job"] == null)) {
-                    return new JobRow[0];
+                    return new JobsRow[0];
                 }
                 else {
-                    return ((JobRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Employees_Job"])));
+                    return ((JobsRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Employees_Job"])));
                 }
             }
         }
@@ -1146,78 +1054,73 @@ namespace BD_lab1_2 {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class JobRow : global::System.Data.DataRow {
+        public partial class JobsRow : global::System.Data.DataRow {
             
-            private JobDataTable tableJob;
+            private JobsDataTable tableJobs;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal JobRow(global::System.Data.DataRowBuilder rb) : 
+            internal JobsRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableJob = ((JobDataTable)(this.Table));
+                this.tableJobs = ((JobsDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string ID {
+            public int ID {
                 get {
-                    try {
-                        return ((string)(this[this.tableJob.IDColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'ID\' в таблице \'Job\' равно DBNull.", e);
-                    }
+                    return ((int)(this[this.tableJobs.IDColumn]));
                 }
                 set {
-                    this[this.tableJob.IDColumn] = value;
+                    this[this.tableJobs.IDColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string EmployeeID {
+            public int EmployeeID {
                 get {
                     try {
-                        return ((string)(this[this.tableJob.EmployeeIDColumn]));
+                        return ((int)(this[this.tableJobs.EmployeeIDColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'EmployeeID\' в таблице \'Job\' равно DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'EmployeeID\' в таблице \'Jobs\' равно DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableJob.EmployeeIDColumn] = value;
+                    this[this.tableJobs.EmployeeIDColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string StartDate {
+            public System.DateTime StartDate {
                 get {
                     try {
-                        return ((string)(this[this.tableJob.StartDateColumn]));
+                        return ((global::System.DateTime)(this[this.tableJobs.StartDateColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'StartDate\' в таблице \'Job\' равно DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'StartDate\' в таблице \'Jobs\' равно DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableJob.StartDateColumn] = value;
+                    this[this.tableJobs.StartDateColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string EndDate {
+            public System.DateTime EndDate {
                 get {
                     try {
-                        return ((string)(this[this.tableJob.EndDateColumn]));
+                        return ((global::System.DateTime)(this[this.tableJobs.EndDateColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'EndDate\' в таблице \'Job\' равно DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'EndDate\' в таблице \'Jobs\' равно DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableJob.EndDateColumn] = value;
+                    this[this.tableJobs.EndDateColumn] = value;
                 }
             }
             
@@ -1226,14 +1129,14 @@ namespace BD_lab1_2 {
             public string Description {
                 get {
                     try {
-                        return ((string)(this[this.tableJob.DescriptionColumn]));
+                        return ((string)(this[this.tableJobs.DescriptionColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Description\' в таблице \'Job\' равно DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Description\' в таблице \'Jobs\' равно DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableJob.DescriptionColumn] = value;
+                    this[this.tableJobs.DescriptionColumn] = value;
                 }
             }
             
@@ -1250,62 +1153,50 @@ namespace BD_lab1_2 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsIDNull() {
-                return this.IsNull(this.tableJob.IDColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetIDNull() {
-                this[this.tableJob.IDColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsEmployeeIDNull() {
-                return this.IsNull(this.tableJob.EmployeeIDColumn);
+                return this.IsNull(this.tableJobs.EmployeeIDColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetEmployeeIDNull() {
-                this[this.tableJob.EmployeeIDColumn] = global::System.Convert.DBNull;
+                this[this.tableJobs.EmployeeIDColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsStartDateNull() {
-                return this.IsNull(this.tableJob.StartDateColumn);
+                return this.IsNull(this.tableJobs.StartDateColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetStartDateNull() {
-                this[this.tableJob.StartDateColumn] = global::System.Convert.DBNull;
+                this[this.tableJobs.StartDateColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsEndDateNull() {
-                return this.IsNull(this.tableJob.EndDateColumn);
+                return this.IsNull(this.tableJobs.EndDateColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetEndDateNull() {
-                this[this.tableJob.EndDateColumn] = global::System.Convert.DBNull;
+                this[this.tableJobs.EndDateColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsDescriptionNull() {
-                return this.IsNull(this.tableJob.DescriptionColumn);
+                return this.IsNull(this.tableJobs.DescriptionColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetDescriptionNull() {
-                this[this.tableJob.DescriptionColumn] = global::System.Convert.DBNull;
+                this[this.tableJobs.DescriptionColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1347,22 +1238,22 @@ namespace BD_lab1_2 {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public class JobRowChangeEvent : global::System.EventArgs {
+        public class JobsRowChangeEvent : global::System.EventArgs {
             
-            private JobRow eventRow;
+            private JobsRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public JobRowChangeEvent(JobRow row, global::System.Data.DataRowAction action) {
+            public JobsRowChangeEvent(JobsRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public JobRow Row {
+            public JobsRow Row {
                 get {
                     return this.eventRow;
                 }
