@@ -8,7 +8,7 @@
         {
         }
 
-        partial class JobDataTable
+        partial class JobsDataTable
         {
         }
     }
