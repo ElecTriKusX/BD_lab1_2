@@ -64,7 +64,29 @@ namespace BD_lab1_2
                 textBox_StartDate.Focus();
                 return;
             }
+            // Дата начала не позже 2100 года
+            if (dateTimePicker_StartDate.Value.Year > 2100)
+            {
+                MessageBox.Show("Дата начала не может быть позже 2100 года!");
+                return;
+            }
 
+            // Дата окончания не позже 2100 и не раньше начала
+            if (dateTimePicker_EndDate.Value.Year > 2100)
+            {
+                MessageBox.Show("Дата окончания не может быть позже 2100 года!");
+                return;
+            }
+            if (dateTimePicker_EndDate.Value < dateTimePicker_StartDate.Value)
+            {
+                MessageBox.Show("Дата окончания не может быть раньше даты начала!");
+                return;
+            }
+            if (textBox_Description.Text.Length > 3000)
+            {
+                MessageBox.Show("Описание не должно превышать 3000 символов!");
+                return;
+            }
             if (jobToEdit == null)
             {
                 MessageBox.Show("Не выбрана работа для редактирования!", "Ошибка",

@@ -15,9 +15,9 @@ namespace BD_lab1_2
         private Label label_EmployeeName;
         private TextBox textBox_EmployeeName;
         private Label label_StartDate;
-        private TextBox textBox_StartDate;
+        private TextBox dateTimePicker_StartDate;
         private Label label_EndDate;
-        private TextBox textBox_EndDate;
+        private TextBox dateTimePicker_EndDate;
         private Label label_Description;
         private TextBox textBox_Description;
         private Button button_Cancel;
@@ -44,9 +44,9 @@ namespace BD_lab1_2
             this.label_EmployeeName = new System.Windows.Forms.Label();
             this.textBox_EmployeeName = new System.Windows.Forms.TextBox();
             this.label_StartDate = new System.Windows.Forms.Label();
-            this.textBox_StartDate = new System.Windows.Forms.TextBox();
+            this.dateTimePicker_StartDate = new System.Windows.Forms.TextBox();
             this.label_EndDate = new System.Windows.Forms.Label();
-            this.textBox_EndDate = new System.Windows.Forms.TextBox();
+            this.dateTimePicker_EndDate = new System.Windows.Forms.TextBox();
             this.label_Description = new System.Windows.Forms.Label();
             this.textBox_Description = new System.Windows.Forms.TextBox();
             this.button_Cancel = new System.Windows.Forms.Button();
@@ -146,14 +146,14 @@ namespace BD_lab1_2
             this.label_StartDate.Text = "Дата начала работы:";
             this.label_StartDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // textBox_StartDate
+            // dateTimePicker_StartDate
             // 
-            this.textBox_StartDate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox_StartDate.Location = new System.Drawing.Point(203, 133);
-            this.textBox_StartDate.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
-            this.textBox_StartDate.Name = "textBox_StartDate";
-            this.textBox_StartDate.Size = new System.Drawing.Size(294, 20);
-            this.textBox_StartDate.TabIndex = 3;
+            this.dateTimePicker_StartDate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dateTimePicker_StartDate.Location = new System.Drawing.Point(203, 133);
+            this.dateTimePicker_StartDate.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
+            this.dateTimePicker_StartDate.Name = "dateTimePicker_StartDate";
+            this.dateTimePicker_StartDate.Size = new System.Drawing.Size(294, 20);
+            this.dateTimePicker_StartDate.TabIndex = 3;
             // 
             // label_EndDate
             // 
@@ -167,14 +167,14 @@ namespace BD_lab1_2
             this.label_EndDate.Text = "Дата окончания работы:";
             this.label_EndDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // textBox_EndDate
+            // dateTimePicker_EndDate
             // 
-            this.textBox_EndDate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox_EndDate.Location = new System.Drawing.Point(203, 163);
-            this.textBox_EndDate.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
-            this.textBox_EndDate.Name = "textBox_EndDate";
-            this.textBox_EndDate.Size = new System.Drawing.Size(294, 20);
-            this.textBox_EndDate.TabIndex = 4;
+            this.dateTimePicker_EndDate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dateTimePicker_EndDate.Location = new System.Drawing.Point(203, 163);
+            this.dateTimePicker_EndDate.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
+            this.dateTimePicker_EndDate.Name = "dateTimePicker_EndDate";
+            this.dateTimePicker_EndDate.Size = new System.Drawing.Size(294, 20);
+            this.dateTimePicker_EndDate.TabIndex = 4;
             // 
             // label_Description
             // 
@@ -233,9 +233,9 @@ namespace BD_lab1_2
             this.tableLayoutPanel1.Controls.Add(this.label_EmployeeName, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.textBox_EmployeeName, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.label_StartDate, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.textBox_StartDate, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.dateTimePicker_StartDate, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.label_EndDate, 0, 5);
-            this.tableLayoutPanel1.Controls.Add(this.textBox_EndDate, 1, 5);
+            this.tableLayoutPanel1.Controls.Add(this.dateTimePicker_EndDate, 1, 5);
             this.tableLayoutPanel1.Controls.Add(this.label_Description, 0, 6);
             this.tableLayoutPanel1.Controls.Add(this.textBox_Description, 1, 6);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;

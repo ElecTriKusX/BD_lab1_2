@@ -34,40 +34,32 @@ namespace BD_lab1_2
 
         private void button_Save_Click(object sender, EventArgs e)
         {
-            // Проверка заполнения обязательных полей
-            if (string.IsNullOrWhiteSpace(textBox_FullName.Text))
+            if (string.IsNullOrWhiteSpace(textBox_FullName.Text) || textBox_FullName.Text.Length > 120)
             {
-                MessageBox.Show("Поле 'ФИО работника' обязательно для заполнения!", "Ошибка",
-                              MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                textBox_FullName.Focus();
+                MessageBox.Show("ФИО обязательно и не более 120 символов!");
                 return;
             }
-
-            if (employeeToEdit == null)
+            if (System.Text.RegularExpressions.Regex.IsMatch(textBox_FullName.Text, @"\d"))
             {
-                MessageBox.Show("Не выбран работник для редактирования!", "Ошибка",
-                              MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("ФИО не должно содержать цифры!");
                 return;
             }
-
-            try
+            if (string.IsNullOrWhiteSpace(textBox_INN.Text) || textBox_INN.Text.Length != 12 ||
+    !System.Text.RegularExpressions.Regex.IsMatch(textBox_INN.Text, @"^\d+$"))
             {
-                // Обновляем данные работника
-                employeeToEdit.BeginEdit();
-                employeeToEdit.FullName = textBox_FullName.Text.Trim();
-                employeeToEdit.BirthDate = textBox_BirthDate.Text.Trim();
-                employeeToEdit.INN = textBox_INN.Text.Trim();
-                employeeToEdit.PensionCertificateNumber = textBox_PensionCertificate.Text.Trim();
-                employeeToEdit.PassportData = textBox_PassportData.Text.Trim();
-                employeeToEdit.EndEdit();
-
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                MessageBox.Show("ИНН должен содержать ровно 12 цифр!");
+                return;
             }
-            catch (Exception ex)
+            if (string.IsNullOrWhiteSpace(textBox_PensionCertificate.Text) || textBox_PensionCertificate.Text.Length != 11 ||
+    !System.Text.RegularExpressions.Regex.IsMatch(textBox_PensionCertificate.Text, @"^\d+$"))
             {
-                MessageBox.Show($"Ошибка при сохранении данных: {ex.Message}", "Ошибка",
-                              MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Пенсионное свидетельство должно содержать ровно 11 цифр!");
+                return;
+            }
+            if (dateTimePicker_BirthDate.Value > DateTime.Now || dateTimePicker_BirthDate.Value.Year > 2200)
+            {
+                MessageBox.Show("Дата рождения не может быть в будущем или позже 2200 года!");
+                return;
             }
         }
 
@@ -75,6 +67,11 @@ namespace BD_lab1_2
         {
             // Установка фокуса на первое поле при загрузке формы
             textBox_FullName.Focus();
+        }
+
+        private void EditEmployeeForm_Load_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

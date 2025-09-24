@@ -11,7 +11,7 @@ namespace BD_lab1_2
         private Label label_FullName;
         private TextBox textBox_FullName;
         private Label label_BirthDate;
-        private TextBox textBox_BirthDate;
+        private TextBox DateTimePicker_BirthDate;
         private Label label_INN;
         private TextBox textBox_INN;
         private Label label_PensionCertificate;
@@ -38,7 +38,7 @@ namespace BD_lab1_2
             this.label_FullName = new System.Windows.Forms.Label();
             this.textBox_FullName = new System.Windows.Forms.TextBox();
             this.label_BirthDate = new System.Windows.Forms.Label();
-            this.textBox_BirthDate = new System.Windows.Forms.TextBox();
+            this.DateTimePicker_BirthDate = new System.Windows.Forms.TextBox();
             this.label_INN = new System.Windows.Forms.Label();
             this.textBox_INN = new System.Windows.Forms.TextBox();
             this.label_PensionCertificate = new System.Windows.Forms.Label();
@@ -102,12 +102,12 @@ namespace BD_lab1_2
             // 
             // textBox_BirthDate
             // 
-            this.textBox_BirthDate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox_BirthDate.Location = new System.Drawing.Point(203, 73);
-            this.textBox_BirthDate.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
-            this.textBox_BirthDate.Name = "textBox_BirthDate";
-            this.textBox_BirthDate.Size = new System.Drawing.Size(194, 20);
-            this.textBox_BirthDate.TabIndex = 1;
+            this.DateTimePicker_BirthDate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DateTimePicker_BirthDate.Location = new System.Drawing.Point(203, 73);
+            this.DateTimePicker_BirthDate.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
+            this.DateTimePicker_BirthDate.Name = "textBox_BirthDate";
+            this.DateTimePicker_BirthDate.Size = new System.Drawing.Size(194, 20);
+            this.DateTimePicker_BirthDate.TabIndex = 1;
             // 
             // label_INN
             // 
@@ -203,7 +203,7 @@ namespace BD_lab1_2
             this.tableLayoutPanel1.Controls.Add(this.label_FullName, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.textBox_FullName, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.label_BirthDate, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.textBox_BirthDate, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.DateTimePicker_BirthDate, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.label_INN, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.textBox_INN, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.label_PensionCertificate, 0, 4);

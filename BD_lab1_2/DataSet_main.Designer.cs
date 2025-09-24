@@ -515,7 +515,6 @@ namespace BD_lab1_2 {
                 base.Columns.Add(this.columnPassportData);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, false));
-                this.columnID.AutoIncrement = true;
                 this.columnID.AllowDBNull = false;
                 this.columnID.Unique = true;
                 this.columnFullName.AllowDBNull = false;
@@ -831,12 +830,12 @@ namespace BD_lab1_2 {
                 base.Columns.Add(this.columnDescription);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, false));
-                this.columnID.AutoIncrement = true;
                 this.columnID.AllowDBNull = false;
                 this.columnID.Unique = true;
                 this.columnEmployeeID.AllowDBNull = false;
                 this.columnStartDate.AllowDBNull = false;
                 this.columnEndDate.AllowDBNull = false;
+                this.columnDescription.AllowDBNull = true;
                 this.columnDescription.MaxLength = 4000;
             }
             

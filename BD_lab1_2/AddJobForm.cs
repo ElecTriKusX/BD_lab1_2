@@ -40,11 +40,36 @@ namespace BD_lab1_2
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(textBox_StartDate.Text))
+            // Дата начала не позже 2100 года
+            if (dateTimePicker_StartDate.Value.Year > 2100)
+            {
+                MessageBox.Show("Дата начала не может быть позже 2100 года!");
+                return;
+            }
+
+            // Дата окончания не позже 2100 и не раньше начала
+            if (dateTimePicker_EndDate.Value.Year > 2100)
+            {
+                MessageBox.Show("Дата окончания не может быть позже 2100 года!");
+                return;
+            }
+            if (dateTimePicker_EndDate.Value < dateTimePicker_StartDate.Value)
+            {
+                MessageBox.Show("Дата окончания не может быть раньше даты начала!");
+                return;
+            }
+
+            if (textBox_Description.Text.Length > 3000)
+            {
+                MessageBox.Show("Описание не должно превышать 3000 символов!");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(dateTimePicker_StartDate.Text))
             {
                 MessageBox.Show("Поле 'Дата начала работы' обязательно для заполнения!", "Ошибка",
                               MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                textBox_StartDate.Focus();
+                dateTimePicker_StartDate.Focus();
                 return;
             }
 
@@ -54,10 +79,9 @@ namespace BD_lab1_2
                 DataSet_main.JobRow newJob = dataSet.Job.NewJobRow();
 
                 // Генерация уникального ID
-                newJob.ID = Guid.NewGuid().ToString();
                 newJob.EmployeeID = selectedEmployee.ID;
-                newJob.StartDate = textBox_StartDate.Text.Trim();
-                newJob.EndDate = textBox_EndDate.Text.Trim();
+                newJob.StartDate = dateTimePicker_StartDate.Text.Trim();
+                newJob.EndDate = dateTimePicker_EndDate.Text.Trim();
                 newJob.Description = textBox_Description.Text.Trim();
 
                 // Добавление в DataSet
@@ -96,7 +120,7 @@ namespace BD_lab1_2
             }
             else
             {
-                textBox_StartDate.Focus();
+                dateTimePicker_StartDate.Focus();
             }
         }
     }
