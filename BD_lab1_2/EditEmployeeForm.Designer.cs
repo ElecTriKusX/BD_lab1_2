@@ -11,7 +11,6 @@ namespace BD_lab1_2
         private Label label_FullName;
         private TextBox textBox_FullName;
         private Label label_BirthDate;
-        private TextBox textBox_BirthDate;
         private Label label_INN;
         private TextBox textBox_INN;
         private Label label_PensionCertificate;
@@ -38,7 +37,6 @@ namespace BD_lab1_2
             this.label_FullName = new System.Windows.Forms.Label();
             this.textBox_FullName = new System.Windows.Forms.TextBox();
             this.label_BirthDate = new System.Windows.Forms.Label();
-            this.textBox_BirthDate = new System.Windows.Forms.TextBox();
             this.label_INN = new System.Windows.Forms.Label();
             this.textBox_INN = new System.Windows.Forms.TextBox();
             this.label_PensionCertificate = new System.Windows.Forms.Label();
@@ -48,6 +46,7 @@ namespace BD_lab1_2
             this.button_Cancel = new System.Windows.Forms.Button();
             this.button_Save = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.dateTimePicker_BirthDate = new System.Windows.Forms.DateTimePicker();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -99,15 +98,6 @@ namespace BD_lab1_2
             this.label_BirthDate.TabIndex = 3;
             this.label_BirthDate.Text = "Дата рождения:";
             this.label_BirthDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // textBox_BirthDate
-            // 
-            this.textBox_BirthDate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox_BirthDate.Location = new System.Drawing.Point(203, 73);
-            this.textBox_BirthDate.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
-            this.textBox_BirthDate.Name = "textBox_BirthDate";
-            this.textBox_BirthDate.Size = new System.Drawing.Size(194, 20);
-            this.textBox_BirthDate.TabIndex = 1;
             // 
             // label_INN
             // 
@@ -199,11 +189,11 @@ namespace BD_lab1_2
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.dateTimePicker_BirthDate, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.label_Title, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label_FullName, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.textBox_FullName, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.label_BirthDate, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.textBox_BirthDate, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.label_INN, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.textBox_INN, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.label_PensionCertificate, 0, 4);
@@ -222,6 +212,18 @@ namespace BD_lab1_2
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(400, 205);
             this.tableLayoutPanel1.TabIndex = 12;
+            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
+            // 
+            // dateTimePicker_BirthDate
+            // 
+            this.dateTimePicker_BirthDate.Checked = false;
+            this.dateTimePicker_BirthDate.CustomFormat = "";
+            this.dateTimePicker_BirthDate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dateTimePicker_BirthDate.Location = new System.Drawing.Point(203, 73);
+            this.dateTimePicker_BirthDate.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.dateTimePicker_BirthDate.Name = "dateTimePicker_BirthDate";
+            this.dateTimePicker_BirthDate.Size = new System.Drawing.Size(194, 20);
+            this.dateTimePicker_BirthDate.TabIndex = 16;
             // 
             // tableLayoutPanel2
             // 
@@ -259,5 +261,7 @@ namespace BD_lab1_2
             this.ResumeLayout(false);
 
         }
+
+        private DateTimePicker dateTimePicker_BirthDate;
     }
 }

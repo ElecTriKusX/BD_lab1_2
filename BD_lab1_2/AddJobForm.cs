@@ -40,24 +40,14 @@ namespace BD_lab1_2
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(textBox_StartDate.Text))
-            {
-                MessageBox.Show("Поле 'Дата начала работы' обязательно для заполнения!", "Ошибка",
-                              MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                textBox_StartDate.Focus();
-                return;
-            }
-
             try
             {
                 // Создание новой записи работы
                 DataSet_main.JobRow newJob = dataSet.Job.NewJobRow();
 
-                // Генерация уникального ID
-                newJob.ID = Guid.NewGuid().ToString();
                 newJob.EmployeeID = selectedEmployee.ID;
-                newJob.StartDate = textBox_StartDate.Text.Trim();
-                newJob.EndDate = textBox_EndDate.Text.Trim();
+                newJob.StartDate = dateTimePicker_StartDate.Value;
+                newJob.EndDate = dateTimePicker_EndDate.Value;
                 newJob.Description = textBox_Description.Text.Trim();
 
                 // Добавление в DataSet
@@ -96,7 +86,7 @@ namespace BD_lab1_2
             }
             else
             {
-                textBox_StartDate.Focus();
+                dateTimePicker_StartDate.Focus();
             }
         }
     }

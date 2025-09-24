@@ -19,9 +19,8 @@ namespace BD_lab1_2
             // Заполняем поля данными выбранной работы
             if (job != null)
             {
-                textBox_ID.Text = job.ID;
-                textBox_StartDate.Text = job.StartDate;
-                textBox_EndDate.Text = job.EndDate;
+                dateTimePicker_StartDate.Value = job.StartDate;
+                dateTimePicker_EndDate.Value = job.EndDate;
                 textBox_Description.Text = job.Description;
 
                 // Получаем ФИО работника
@@ -29,7 +28,6 @@ namespace BD_lab1_2
                 if (employee != null)
                 {
                     textBox_EmployeeName.Text = employee.FullName;
-                    textBox_EmployeeID.Text = job.EmployeeID;
                 }
 
                 // Делаем поля ID и EmployeeID только для чтения
@@ -39,12 +37,7 @@ namespace BD_lab1_2
 
         private void SetIDControlsReadOnly()
         {
-            textBox_ID.ReadOnly = true;
-            textBox_EmployeeID.ReadOnly = true;
             textBox_EmployeeName.ReadOnly = true;
-
-            textBox_ID.BackColor = SystemColors.Control;
-            textBox_EmployeeID.BackColor = SystemColors.Control;
             textBox_EmployeeName.BackColor = SystemColors.Control;
         }
 
@@ -57,13 +50,6 @@ namespace BD_lab1_2
         private void button_Save_Click(object sender, EventArgs e)
         {
             // Проверка заполнения обязательных полей
-            if (string.IsNullOrWhiteSpace(textBox_StartDate.Text))
-            {
-                MessageBox.Show("Поле 'Дата начала работы' обязательно для заполнения!", "Ошибка",
-                              MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                textBox_StartDate.Focus();
-                return;
-            }
 
             if (jobToEdit == null)
             {
@@ -76,8 +62,8 @@ namespace BD_lab1_2
             {
                 // Обновляем данные работы
                 jobToEdit.BeginEdit();
-                jobToEdit.StartDate = textBox_StartDate.Text.Trim();
-                jobToEdit.EndDate = textBox_EndDate.Text.Trim();
+                jobToEdit.StartDate = dateTimePicker_StartDate.Value;
+                jobToEdit.EndDate = dateTimePicker_EndDate.Value;
                 jobToEdit.Description = textBox_Description.Text.Trim();
                 jobToEdit.EndEdit();
 
@@ -94,7 +80,7 @@ namespace BD_lab1_2
         private void EditJobForm_Load(object sender, EventArgs e)
         {
             // Устанавливаем фокус на поле даты начала при загрузке формы
-            textBox_StartDate.Focus();
+            dateTimePicker_StartDate.Focus();
         }
 
         private void button_SelectEmployee_Click(object sender, EventArgs e)
@@ -105,7 +91,6 @@ namespace BD_lab1_2
                 {
                     var selectedEmployee = selectForm.SelectedEmployee;
                     textBox_EmployeeName.Text = selectedEmployee.FullName;
-                    textBox_EmployeeID.Text = selectedEmployee.ID;
 
                     // Обновляем EmployeeID в редактируемой записи
                     if (jobToEdit != null)

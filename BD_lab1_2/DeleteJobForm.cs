@@ -19,10 +19,8 @@ namespace BD_lab1_2
             // Заполняем поля данными выбранной работы
             if (job != null)
             {
-                textBox_ID.Text = job.ID;
-                textBox_EmployeeID.Text = job.EmployeeID;
-                textBox_StartDate.Text = job.StartDate;
-                textBox_EndDate.Text = job.EndDate;
+                dateTimePicker_StartDate.Value = job.StartDate;
+                dateTimePicker_EndDate.Value = job.EndDate;
                 textBox_Description.Text = job.Description;
 
                 // Получаем ФИО работника (исправленная строка)
@@ -40,19 +38,15 @@ namespace BD_lab1_2
         // Остальной код без изменений...
         private void SetControlsReadOnly()
         {
-            textBox_ID.ReadOnly = true;
-            textBox_EmployeeID.ReadOnly = true;
             textBox_EmployeeName.ReadOnly = true;
-            textBox_StartDate.ReadOnly = true;
-            textBox_EndDate.ReadOnly = true;
+            dateTimePicker_StartDate.Enabled = false;
+            dateTimePicker_EndDate.Enabled = false;
             textBox_Description.ReadOnly = true;
 
             // Устанавливаем серый фон для наглядности
-            textBox_ID.BackColor = SystemColors.Control;
-            textBox_EmployeeID.BackColor = SystemColors.Control;
             textBox_EmployeeName.BackColor = SystemColors.Control;
-            textBox_StartDate.BackColor = SystemColors.Control;
-            textBox_EndDate.BackColor = SystemColors.Control;
+            dateTimePicker_StartDate.BackColor = SystemColors.Control;
+            dateTimePicker_EndDate.BackColor = SystemColors.Control;
             textBox_Description.BackColor = SystemColors.Control;
         }
 

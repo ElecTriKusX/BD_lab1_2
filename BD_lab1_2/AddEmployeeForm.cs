@@ -36,10 +36,8 @@ namespace BD_lab1_2
                 // Создание новой записи сотрудника
                 DataSet_main.EmployeesRow newEmployee = dataSet.Employees.NewEmployeesRow();
 
-                // Генерация уникального ID
-                newEmployee.ID = Guid.NewGuid().ToString();
                 newEmployee.FullName = textBox_FullName.Text.Trim();
-                newEmployee.BirthDate = textBox_BirthDate.Text.Trim();
+                newEmployee.BirthDate = dateTimePicker_BirthDate.Value;
                 newEmployee.INN = textBox_INN.Text.Trim();
                 newEmployee.PensionCertificateNumber = textBox_PensionCertificate.Text.Trim();
                 newEmployee.PassportData = textBox_PassportData.Text.Trim();
@@ -61,6 +59,11 @@ namespace BD_lab1_2
         {
             // Установка фокуса на первое поле при загрузке формы
             textBox_FullName.Focus();
+        }
+
+        private void dateTimePicker_BirthDate_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

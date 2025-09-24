@@ -19,7 +19,7 @@ namespace BD_lab1_2
             if (employee != null)
             {
                 textBox_FullName.Text = employee.FullName;
-                textBox_BirthDate.Text = employee.BirthDate;
+                dateTimePicker_BirthDate.Value = employee.BirthDate;
                 textBox_INN.Text = employee.INN;
                 textBox_PensionCertificate.Text = employee.PensionCertificateNumber;
                 textBox_PassportData.Text = employee.PassportData;
@@ -55,7 +55,7 @@ namespace BD_lab1_2
                 // Обновляем данные работника
                 employeeToEdit.BeginEdit();
                 employeeToEdit.FullName = textBox_FullName.Text.Trim();
-                employeeToEdit.BirthDate = textBox_BirthDate.Text.Trim();
+                employeeToEdit.BirthDate = dateTimePicker_BirthDate.Value;
                 employeeToEdit.INN = textBox_INN.Text.Trim();
                 employeeToEdit.PensionCertificateNumber = textBox_PensionCertificate.Text.Trim();
                 employeeToEdit.PassportData = textBox_PassportData.Text.Trim();
@@ -75,6 +75,16 @@ namespace BD_lab1_2
         {
             // Установка фокуса на первое поле при загрузке формы
             textBox_FullName.Focus();
+        }
+
+        private void dateTimePicker_BirthDate_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

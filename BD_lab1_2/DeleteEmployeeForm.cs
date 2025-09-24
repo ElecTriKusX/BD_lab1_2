@@ -19,7 +19,7 @@ namespace BD_lab1_2
             if (employee != null)
             {
                 textBox_FullName.Text = employee.FullName;
-                textBox_BirthDate.Text = employee.BirthDate;
+                dateTimePicker_BirthDate.Value = employee.BirthDate;
                 textBox_INN.Text = employee.INN;
                 textBox_PensionCertificate.Text = employee.PensionCertificateNumber;
                 textBox_PassportData.Text = employee.PassportData;
@@ -32,14 +32,14 @@ namespace BD_lab1_2
         private void SetControlsReadOnly()
         {
             textBox_FullName.ReadOnly = true;
-            textBox_BirthDate.ReadOnly = true;
+            dateTimePicker_BirthDate.Enabled = false;
             textBox_INN.ReadOnly = true;
             textBox_PensionCertificate.ReadOnly = true;
             textBox_PassportData.ReadOnly = true;
 
             // Устанавливаем серый фон для наглядности
             textBox_FullName.BackColor = SystemColors.Control;
-            textBox_BirthDate.BackColor = SystemColors.Control;
+            dateTimePicker_BirthDate.BackColor = SystemColors.Control;
             textBox_INN.BackColor = SystemColors.Control;
             textBox_PensionCertificate.BackColor = SystemColors.Control;
             textBox_PassportData.BackColor = SystemColors.Control;

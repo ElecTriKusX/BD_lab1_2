@@ -8,16 +8,10 @@ namespace BD_lab1_2
     {
         private System.ComponentModel.IContainer components = null;
         private Label label_Title;
-        private Label label_ID;
-        private TextBox textBox_ID;
-        private Label label_EmployeeID;
-        private TextBox textBox_EmployeeID;
         private Label label_EmployeeName;
         private TextBox textBox_EmployeeName;
         private Label label_StartDate;
-        private TextBox textBox_StartDate;
         private Label label_EndDate;
-        private TextBox textBox_EndDate;
         private Label label_Description;
         private TextBox textBox_Description;
         private Button button_Cancel;
@@ -37,22 +31,18 @@ namespace BD_lab1_2
         private void InitializeComponent()
         {
             this.label_Title = new System.Windows.Forms.Label();
-            this.label_ID = new System.Windows.Forms.Label();
-            this.textBox_ID = new System.Windows.Forms.TextBox();
-            this.label_EmployeeID = new System.Windows.Forms.Label();
-            this.textBox_EmployeeID = new System.Windows.Forms.TextBox();
             this.label_EmployeeName = new System.Windows.Forms.Label();
             this.textBox_EmployeeName = new System.Windows.Forms.TextBox();
             this.label_StartDate = new System.Windows.Forms.Label();
-            this.textBox_StartDate = new System.Windows.Forms.TextBox();
             this.label_EndDate = new System.Windows.Forms.Label();
-            this.textBox_EndDate = new System.Windows.Forms.TextBox();
             this.label_Description = new System.Windows.Forms.Label();
             this.textBox_Description = new System.Windows.Forms.TextBox();
             this.button_Cancel = new System.Windows.Forms.Button();
             this.button_Delete = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.dateTimePicker_StartDate = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker_EndDate = new System.Windows.Forms.DateTimePicker();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
@@ -70,48 +60,6 @@ namespace BD_lab1_2
             this.label_Title.TabIndex = 0;
             this.label_Title.Text = "Удаление работы";
             this.label_Title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label_ID
-            // 
-            this.label_ID.AutoSize = true;
-            this.label_ID.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label_ID.Location = new System.Drawing.Point(3, 40);
-            this.label_ID.Margin = new System.Windows.Forms.Padding(3, 0, 3, 5);
-            this.label_ID.Name = "label_ID";
-            this.label_ID.Size = new System.Drawing.Size(194, 25);
-            this.label_ID.TabIndex = 1;
-            this.label_ID.Text = "Код работы:";
-            this.label_ID.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // textBox_ID
-            // 
-            this.textBox_ID.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox_ID.Location = new System.Drawing.Point(203, 43);
-            this.textBox_ID.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
-            this.textBox_ID.Name = "textBox_ID";
-            this.textBox_ID.Size = new System.Drawing.Size(294, 20);
-            this.textBox_ID.TabIndex = 0;
-            // 
-            // label_EmployeeID
-            // 
-            this.label_EmployeeID.AutoSize = true;
-            this.label_EmployeeID.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label_EmployeeID.Location = new System.Drawing.Point(3, 70);
-            this.label_EmployeeID.Margin = new System.Windows.Forms.Padding(3, 0, 3, 5);
-            this.label_EmployeeID.Name = "label_EmployeeID";
-            this.label_EmployeeID.Size = new System.Drawing.Size(194, 25);
-            this.label_EmployeeID.TabIndex = 3;
-            this.label_EmployeeID.Text = "Код работника:";
-            this.label_EmployeeID.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // textBox_EmployeeID
-            // 
-            this.textBox_EmployeeID.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox_EmployeeID.Location = new System.Drawing.Point(203, 73);
-            this.textBox_EmployeeID.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
-            this.textBox_EmployeeID.Name = "textBox_EmployeeID";
-            this.textBox_EmployeeID.Size = new System.Drawing.Size(294, 20);
-            this.textBox_EmployeeID.TabIndex = 1;
             // 
             // label_EmployeeName
             // 
@@ -146,15 +94,6 @@ namespace BD_lab1_2
             this.label_StartDate.Text = "Дата начала работы:";
             this.label_StartDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // textBox_StartDate
-            // 
-            this.textBox_StartDate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox_StartDate.Location = new System.Drawing.Point(203, 133);
-            this.textBox_StartDate.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
-            this.textBox_StartDate.Name = "textBox_StartDate";
-            this.textBox_StartDate.Size = new System.Drawing.Size(294, 20);
-            this.textBox_StartDate.TabIndex = 3;
-            // 
             // label_EndDate
             // 
             this.label_EndDate.AutoSize = true;
@@ -166,15 +105,6 @@ namespace BD_lab1_2
             this.label_EndDate.TabIndex = 9;
             this.label_EndDate.Text = "Дата окончания работы:";
             this.label_EndDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // textBox_EndDate
-            // 
-            this.textBox_EndDate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox_EndDate.Location = new System.Drawing.Point(203, 163);
-            this.textBox_EndDate.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
-            this.textBox_EndDate.Name = "textBox_EndDate";
-            this.textBox_EndDate.Size = new System.Drawing.Size(294, 20);
-            this.textBox_EndDate.TabIndex = 4;
             // 
             // label_Description
             // 
@@ -225,17 +155,13 @@ namespace BD_lab1_2
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
+            this.tableLayoutPanel1.Controls.Add(this.dateTimePicker_EndDate, 1, 5);
+            this.tableLayoutPanel1.Controls.Add(this.dateTimePicker_StartDate, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.label_Title, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label_ID, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.textBox_ID, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label_EmployeeID, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.textBox_EmployeeID, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.label_EmployeeName, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.textBox_EmployeeName, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.label_StartDate, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.textBox_StartDate, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.label_EndDate, 0, 5);
-            this.tableLayoutPanel1.Controls.Add(this.textBox_EndDate, 1, 5);
             this.tableLayoutPanel1.Controls.Add(this.label_Description, 0, 6);
             this.tableLayoutPanel1.Controls.Add(this.textBox_Description, 1, 6);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -267,6 +193,28 @@ namespace BD_lab1_2
             this.tableLayoutPanel2.Size = new System.Drawing.Size(500, 40);
             this.tableLayoutPanel2.TabIndex = 13;
             // 
+            // dateTimePicker_StartDate
+            // 
+            this.dateTimePicker_StartDate.Checked = false;
+            this.dateTimePicker_StartDate.CustomFormat = "";
+            this.dateTimePicker_StartDate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dateTimePicker_StartDate.Location = new System.Drawing.Point(203, 133);
+            this.dateTimePicker_StartDate.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.dateTimePicker_StartDate.Name = "dateTimePicker_StartDate";
+            this.dateTimePicker_StartDate.Size = new System.Drawing.Size(294, 20);
+            this.dateTimePicker_StartDate.TabIndex = 32;
+            // 
+            // dateTimePicker_EndDate
+            // 
+            this.dateTimePicker_EndDate.Checked = false;
+            this.dateTimePicker_EndDate.CustomFormat = "";
+            this.dateTimePicker_EndDate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dateTimePicker_EndDate.Location = new System.Drawing.Point(203, 163);
+            this.dateTimePicker_EndDate.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.dateTimePicker_EndDate.Name = "dateTimePicker_EndDate";
+            this.dateTimePicker_EndDate.Size = new System.Drawing.Size(294, 20);
+            this.dateTimePicker_EndDate.TabIndex = 33;
+            // 
             // DeleteJobForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -288,5 +236,8 @@ namespace BD_lab1_2
             this.ResumeLayout(false);
 
         }
+
+        private DateTimePicker dateTimePicker_EndDate;
+        private DateTimePicker dateTimePicker_StartDate;
     }
 }
