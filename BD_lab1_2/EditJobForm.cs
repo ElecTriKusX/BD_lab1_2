@@ -21,7 +21,7 @@ namespace BD_lab1_2
             {
                 dateTimePicker_StartDate.Value = job.StartDate;
                 dateTimePicker_EndDate.Value = job.EndDate;
-                textBox_Description.Text = job.Description;
+                textBox_Description.Text = job.IsDescriptionNull() ? string.Empty : job.Description;
 
                 // Получаем ФИО работника
                 var employee = dataSet.Employees.FirstOrDefault(emp => emp.ID == job.EmployeeID);
@@ -49,12 +49,45 @@ namespace BD_lab1_2
 
         private void button_Save_Click(object sender, EventArgs e)
         {
-            // Проверка заполнения обязательных полей
-
             if (jobToEdit == null)
             {
                 MessageBox.Show("Не выбрана работа для редактирования!", "Ошибка",
                               MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Проверка обязательных полей
+            if (dateTimePicker_StartDate.Value == DateTime.MinValue)
+            {
+                MessageBox.Show("Дата начала обязательна для заполнения!", "Ошибка",
+                              MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                dateTimePicker_StartDate.Focus();
+                return;
+            }
+
+            if (dateTimePicker_EndDate.Value == DateTime.MinValue)
+            {
+                MessageBox.Show("Дата окончания обязательна для заполнения!", "Ошибка",
+                              MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                dateTimePicker_EndDate.Focus();
+                return;
+            }
+
+            // Проверка корректности дат
+            if (dateTimePicker_EndDate.Value < dateTimePicker_StartDate.Value)
+            {
+                MessageBox.Show("Дата окончания не может быть раньше даты начала!", "Ошибка",
+                              MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                dateTimePicker_EndDate.Focus();
+                return;
+            }
+
+            // Проверка описания (опциональное поле)
+            if (!string.IsNullOrWhiteSpace(textBox_Description.Text) && textBox_Description.Text.Length > 3000)
+            {
+                MessageBox.Show("Описание не должно превышать 3000 символов!", "Ошибка",
+                              MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                textBox_Description.Focus();
                 return;
             }
 
@@ -64,7 +97,13 @@ namespace BD_lab1_2
                 jobToEdit.BeginEdit();
                 jobToEdit.StartDate = dateTimePicker_StartDate.Value;
                 jobToEdit.EndDate = dateTimePicker_EndDate.Value;
-                jobToEdit.Description = textBox_Description.Text.Trim();
+
+                // Описание - опциональное поле
+                if (!string.IsNullOrWhiteSpace(textBox_Description.Text))
+                    jobToEdit.Description = textBox_Description.Text.Trim();
+                else
+                    jobToEdit.SetDescriptionNull();
+
                 jobToEdit.EndEdit();
 
                 this.DialogResult = DialogResult.OK;

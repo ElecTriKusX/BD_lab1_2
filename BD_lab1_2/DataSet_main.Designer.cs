@@ -837,6 +837,7 @@ namespace BD_lab1_2 {
                 this.columnEmployeeID.AllowDBNull = false;
                 this.columnStartDate.AllowDBNull = false;
                 this.columnEndDate.AllowDBNull = false;
+                this.columnDescription.AllowDBNull = true;
                 this.columnDescription.MaxLength = 4000;
             }
             

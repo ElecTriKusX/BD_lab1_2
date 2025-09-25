@@ -21,7 +21,7 @@ namespace BD_lab1_2
             {
                 dateTimePicker_StartDate.Value = job.StartDate;
                 dateTimePicker_EndDate.Value = job.EndDate;
-                textBox_Description.Text = job.Description;
+                textBox_Description.Text = job.IsDescriptionNull() ? string.Empty : job.Description;
 
                 // Получаем ФИО работника (исправленная строка)
                 var employee = dataSet.Employees.FirstOrDefault(emp => emp.ID == job.EmployeeID);

@@ -22,12 +22,59 @@ namespace BD_lab1_2
 
         private void button_Save_Click(object sender, EventArgs e)
         {
-            // Проверка заполнения обязательных полей
-            if (string.IsNullOrWhiteSpace(textBox_FullName.Text))
+            // Проверка ФИО
+            if (string.IsNullOrWhiteSpace(textBox_FullName.Text) || textBox_FullName.Text.Length > 120)
             {
-                MessageBox.Show("Поле 'ФИО работника' обязательно для заполнения!", "Ошибка",
+                MessageBox.Show("ФИО обязательно для заполнения и не должно превышать 120 символов!", "Ошибка",
                               MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 textBox_FullName.Focus();
+                return;
+            }
+
+            // Проверка цифр в ФИО
+            if (System.Text.RegularExpressions.Regex.IsMatch(textBox_FullName.Text, @"\d"))
+            {
+                MessageBox.Show("ФИО не должно содержать цифры!", "Ошибка",
+                              MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                textBox_FullName.Focus();
+                return;
+            }
+
+            // Проверка даты рождения
+            if (dateTimePicker_BirthDate.Value == null || dateTimePicker_BirthDate.Value > DateTime.Now)
+            {
+                MessageBox.Show("Дата рождения должна быть корректной датой, не позднее текущей даты.", "Ошибка",
+                              MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                dateTimePicker_BirthDate.Focus();
+                return;
+            }
+
+            // Проверка ИНН (12 цифр)
+            if (string.IsNullOrWhiteSpace(textBox_INN.Text) || textBox_INN.Text.Length != 12 ||
+                !System.Text.RegularExpressions.Regex.IsMatch(textBox_INN.Text, @"^\d+$"))
+            {
+                MessageBox.Show("ИНН должен содержать ровно 12 цифр!", "Ошибка",
+                              MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                textBox_INN.Focus();
+                return;
+            }
+
+            // Проверка пенсионного свидетельства (11 цифр)
+            if (string.IsNullOrWhiteSpace(textBox_PensionCertificate.Text) || textBox_PensionCertificate.Text.Length != 11 ||
+                !System.Text.RegularExpressions.Regex.IsMatch(textBox_PensionCertificate.Text, @"^\d+$"))
+            {
+                MessageBox.Show("№ пенсионного свидетельства должен содержать ровно 11 цифр!", "Ошибка",
+                              MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                textBox_PensionCertificate.Focus();
+                return;
+            }
+
+            // Проверка паспортных данных
+            if (string.IsNullOrWhiteSpace(textBox_PassportData.Text))
+            {
+                MessageBox.Show("Паспортные данные обязательны для заполнения!", "Ошибка",
+                              MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                textBox_PassportData.Focus();
                 return;
             }
 
@@ -53,6 +100,7 @@ namespace BD_lab1_2
                 MessageBox.Show($"Ошибка при сохранении данных: {ex.Message}", "Ошибка",
                               MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
 
         private void AddEmployeeForm_Load(object sender, EventArgs e)

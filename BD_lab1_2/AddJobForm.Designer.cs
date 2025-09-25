@@ -42,9 +42,9 @@ namespace BD_lab1_2
             this.button_Cancel = new System.Windows.Forms.Button();
             this.button_Save = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.dateTimePicker_StartDate = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker_EndDate = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker_StartDate = new System.Windows.Forms.DateTimePicker();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
@@ -192,6 +192,28 @@ namespace BD_lab1_2
             this.tableLayoutPanel1.Size = new System.Drawing.Size(500, 205);
             this.tableLayoutPanel1.TabIndex = 12;
             // 
+            // dateTimePicker_EndDate
+            // 
+            this.dateTimePicker_EndDate.Checked = false;
+            this.dateTimePicker_EndDate.CustomFormat = "";
+            this.dateTimePicker_EndDate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dateTimePicker_EndDate.Location = new System.Drawing.Point(203, 103);
+            this.dateTimePicker_EndDate.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.dateTimePicker_EndDate.Name = "dateTimePicker_EndDate";
+            this.dateTimePicker_EndDate.Size = new System.Drawing.Size(194, 20);
+            this.dateTimePicker_EndDate.TabIndex = 19;
+            // 
+            // dateTimePicker_StartDate
+            // 
+            this.dateTimePicker_StartDate.Checked = false;
+            this.dateTimePicker_StartDate.CustomFormat = "";
+            this.dateTimePicker_StartDate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dateTimePicker_StartDate.Location = new System.Drawing.Point(203, 73);
+            this.dateTimePicker_StartDate.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.dateTimePicker_StartDate.Name = "dateTimePicker_StartDate";
+            this.dateTimePicker_StartDate.Size = new System.Drawing.Size(194, 20);
+            this.dateTimePicker_StartDate.TabIndex = 17;
+            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 2;
@@ -206,28 +228,6 @@ namespace BD_lab1_2
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(500, 40);
             this.tableLayoutPanel2.TabIndex = 13;
-            // 
-            // dateTimePicker_StartDate
-            // 
-            this.dateTimePicker_StartDate.Checked = false;
-            this.dateTimePicker_StartDate.CustomFormat = "";
-            this.dateTimePicker_StartDate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dateTimePicker_StartDate.Location = new System.Drawing.Point(203, 73);
-            this.dateTimePicker_StartDate.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
-            this.dateTimePicker_StartDate.Name = "dateTimePicker_StartDate";
-            this.dateTimePicker_StartDate.Size = new System.Drawing.Size(194, 20);
-            this.dateTimePicker_StartDate.TabIndex = 17;
-            // 
-            // dateTimePicker_EndDate
-            // 
-            this.dateTimePicker_EndDate.Checked = false;
-            this.dateTimePicker_EndDate.CustomFormat = "";
-            this.dateTimePicker_EndDate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dateTimePicker_EndDate.Location = new System.Drawing.Point(203, 103);
-            this.dateTimePicker_EndDate.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
-            this.dateTimePicker_EndDate.Name = "dateTimePicker_EndDate";
-            this.dateTimePicker_EndDate.Size = new System.Drawing.Size(194, 20);
-            this.dateTimePicker_EndDate.TabIndex = 19;
             // 
             // AddJobForm
             // 

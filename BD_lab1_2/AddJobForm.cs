@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Runtime.InteropServices.ComTypes;
 using System.Windows.Forms;
 
 namespace BD_lab1_2
@@ -32,7 +33,7 @@ namespace BD_lab1_2
 
         private void button_Save_Click(object sender, EventArgs e)
         {
-            // Проверка заполнения обязательных полей
+            // Проверка выбора работника
             if (selectedEmployee == null)
             {
                 MessageBox.Show("Не выбран работник!", "Ошибка",
@@ -40,17 +41,57 @@ namespace BD_lab1_2
                 return;
             }
 
+            // Проверка даты начала 
+            if (dateTimePicker_StartDate.Value == DateTime.MinValue)
+            {
+                MessageBox.Show("Дата начала обязательна для заполнения!", "Ошибка",
+                              MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                dateTimePicker_StartDate.Focus();
+                return;
+            }
+
+            // Проверка даты окончания 
+            if (dateTimePicker_EndDate.Value == DateTime.MinValue)
+            {
+                MessageBox.Show("Дата окончания обязательна для заполнения!", "Ошибка",
+                              MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                dateTimePicker_EndDate.Focus();
+                return;
+            }
+
+            // Проверка корректности дат
+            if (dateTimePicker_EndDate.Value < dateTimePicker_StartDate.Value)
+            {
+                MessageBox.Show("Дата окончания не может быть раньше даты начала!", "Ошибка",
+                              MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                dateTimePicker_EndDate.Focus();
+                return;
+            }
+
+            // Проверка длины описания 
+            if (!string.IsNullOrWhiteSpace(textBox_Description.Text) && textBox_Description.Text.Length > 3000)
+            {
+                MessageBox.Show("Описание не должно превышать 3000 символов!", "Ошибка",
+                              MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                textBox_Description.Focus();
+                return;
+            }
+
             try
             {
-                // Создание новой записи работы
+                // Создание новой записи
                 DataSet_main.JobRow newJob = dataSet.Job.NewJobRow();
 
                 newJob.EmployeeID = selectedEmployee.ID;
                 newJob.StartDate = dateTimePicker_StartDate.Value;
                 newJob.EndDate = dateTimePicker_EndDate.Value;
-                newJob.Description = textBox_Description.Text.Trim();
 
-                // Добавление в DataSet
+                // Описание - опциональное поле
+                if (!string.IsNullOrWhiteSpace(textBox_Description.Text))
+                    newJob.Description = textBox_Description.Text.Trim();
+                else
+                    newJob.SetDescriptionNull(); // Явно устанавливаем NULL
+
                 dataSet.Job.AddJobRow(newJob);
 
                 this.DialogResult = DialogResult.OK;
