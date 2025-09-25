@@ -74,7 +74,7 @@ namespace BD_lab1_2
             }
 
             // Проверка корректности дат
-            if (dateTimePicker_EndDate.Value < dateTimePicker_StartDate.Value)
+            if (dateTimePicker_EndDate.Value.Date < dateTimePicker_StartDate.Value.Date)
             {
                 MessageBox.Show("Дата окончания не может быть раньше даты начала!", "Ошибка",
                               MessageBoxButtons.OK, MessageBoxIcon.Warning);

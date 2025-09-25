@@ -12,6 +12,8 @@ namespace BD_lab1_2
         {
             InitializeComponent();
             this.dataSet = dataSet;
+
+            dateTimePicker_BirthDate.MaxDate = DateTime.Today;
         }
 
         private void button_Cancel_Click(object sender, EventArgs e)

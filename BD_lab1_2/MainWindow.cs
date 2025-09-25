@@ -14,22 +14,60 @@ namespace BD_lab1_2
     public partial class MainWindow : Form
     {
         public MainWindow()
-        {   
-            InitializeComponent();
+{   
+    InitializeComponent();
 
-            try
-            {
-                dataSet_main.ReadXml("DataSet.xml");
-                Console.WriteLine("Loaded");
+    try
+    {
+        dataSet_main.ReadXml("DataSet.xml");
+        Console.WriteLine("Loaded");
 
-                employeesBindingSource.ResetBindings(false);
-                jobBindingSource.ResetBindings(false);
-            }
-            catch (Exception ex)
+        // Создаем вычисляемый столбец в DataTable
+        if (!dataSet_main.Job.Columns.Contains("EmployeeFullName"))
+        {
+            DataColumn fullNameColumn = new DataColumn("EmployeeFullName", typeof(string));
+            fullNameColumn.Expression = "Parent(FK_Employees_Job).FullName";
+            dataSet_main.Job.Columns.Add(fullNameColumn);
+        }
+
+        employeesBindingSource.ResetBindings(false);
+        jobBindingSource.ResetBindings(false);
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine(ex.Message);
+    }
+}
+
+private void JobBindingSource_ListChanged(object sender, ListChangedEventArgs e)
+{
+    if (e.ListChangedType == ListChangedType.ItemChanged || 
+        e.ListChangedType == ListChangedType.Reset)
+    {
+        // При изменении данных обновляем отображение
+        UpdateEmployeeFullNames();
+    }
+}
+
+private void UpdateEmployeeFullNames()
+{
+    DataRelation relation = dataSet_main.Relations["FK_Employees_Job"];
+    
+    foreach (DataRowView rowView in jobBindingSource)
+    {
+        DataSet_main.JobRow jobRow = rowView.Row as DataSet_main.JobRow;
+        if (jobRow != null && !jobRow.IsNull("EmployeeID"))
+        {
+            DataRow[] parentRows = jobRow.GetParentRows(relation);
+            if (parentRows.Length > 0)
             {
-                Console.WriteLine(ex.Message);
+                DataSet_main.EmployeesRow employeeRow = parentRows[0] as DataSet_main.EmployeesRow;
+                // Обновляем значение через BindingSource
+                rowView["EmployeeFullName"] = employeeRow.FullName;
             }
         }
+    }
+}
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {

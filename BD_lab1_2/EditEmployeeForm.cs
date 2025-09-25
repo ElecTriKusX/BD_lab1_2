@@ -18,6 +18,7 @@ namespace BD_lab1_2
             // Заполняем поля данными выбранного работника
             if (employee != null)
             {
+                dateTimePicker_BirthDate.MaxDate = DateTime.Today;
                 textBox_FullName.Text = employee.FullName;
                 dateTimePicker_BirthDate.Value = employee.BirthDate.Date;
                 textBox_INN.Text = employee.INN;
