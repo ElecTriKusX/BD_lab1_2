@@ -19,8 +19,8 @@ namespace BD_lab1_2
             // Заполняем поля данными выбранной работы
             if (job != null)
             {
-                dateTimePicker_StartDate.Value = job.StartDate;
-                dateTimePicker_EndDate.Value = job.EndDate;
+                dateTimePicker_StartDate.Value = job.StartDate.Date;
+                dateTimePicker_EndDate.Value = job.EndDate.Date;
                 textBox_Description.Text = job.IsDescriptionNull() ? string.Empty : job.Description;
 
                 // Получаем ФИО работника
@@ -95,8 +95,8 @@ namespace BD_lab1_2
             {
                 // Обновляем данные работы
                 jobToEdit.BeginEdit();
-                jobToEdit.StartDate = dateTimePicker_StartDate.Value;
-                jobToEdit.EndDate = dateTimePicker_EndDate.Value;
+                jobToEdit.StartDate = dateTimePicker_StartDate.Value.Date;
+                jobToEdit.EndDate = dateTimePicker_EndDate.Value.Date;
 
                 // Описание - опциональное поле
                 if (!string.IsNullOrWhiteSpace(textBox_Description.Text))
@@ -105,6 +105,11 @@ namespace BD_lab1_2
                     jobToEdit.SetDescriptionNull();
 
                 jobToEdit.EndEdit();
+
+                dataSet.Employees.AcceptChanges();
+                dataSet.Job.AcceptChanges();
+                dataSet.WriteXml("DataSet.xml");
+                Console.Write("Saved\n");
 
                 this.DialogResult = DialogResult.OK;
                 this.Close();
@@ -140,6 +145,11 @@ namespace BD_lab1_2
                     }
                 }
             }
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

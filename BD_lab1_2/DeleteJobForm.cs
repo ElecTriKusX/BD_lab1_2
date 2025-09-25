@@ -19,8 +19,8 @@ namespace BD_lab1_2
             // Заполняем поля данными выбранной работы
             if (job != null)
             {
-                dateTimePicker_StartDate.Value = job.StartDate;
-                dateTimePicker_EndDate.Value = job.EndDate;
+                dateTimePicker_StartDate.Value = job.StartDate.Date;
+                dateTimePicker_EndDate.Value = job.EndDate.Date;
                 textBox_Description.Text = job.IsDescriptionNull() ? string.Empty : job.Description;
 
                 // Получаем ФИО работника (исправленная строка)
@@ -80,6 +80,11 @@ namespace BD_lab1_2
 
                 // Удаляем работу
                 jobToDelete.Delete();
+
+                dataSet.Employees.AcceptChanges();
+                dataSet.Job.AcceptChanges();
+                dataSet.WriteXml("DataSet.xml");
+                Console.Write("Saved\n");
 
                 this.DialogResult = DialogResult.OK;
                 this.Close();

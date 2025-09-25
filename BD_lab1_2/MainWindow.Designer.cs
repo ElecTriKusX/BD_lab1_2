@@ -83,7 +83,9 @@
             this.passportDataDataGridViewTextBoxColumn});
             this.dataGridView_Employee.DataSource = this.employeesBindingSource;
             this.dataGridView_Employee.Location = new System.Drawing.Point(6, 19);
+            this.dataGridView_Employee.MultiSelect = false;
             this.dataGridView_Employee.Name = "dataGridView_Employee";
+            this.dataGridView_Employee.ReadOnly = true;
             this.dataGridView_Employee.Size = new System.Drawing.Size(738, 225);
             this.dataGridView_Employee.TabIndex = 0;
             this.dataGridView_Employee.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
@@ -93,6 +95,7 @@
             this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
             this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
             this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
+            this.iDDataGridViewTextBoxColumn.ReadOnly = true;
             this.iDDataGridViewTextBoxColumn.Visible = false;
             // 
             // fullNameDataGridViewTextBoxColumn
@@ -100,6 +103,7 @@
             this.fullNameDataGridViewTextBoxColumn.DataPropertyName = "FullName";
             this.fullNameDataGridViewTextBoxColumn.HeaderText = "ФИО работника";
             this.fullNameDataGridViewTextBoxColumn.Name = "fullNameDataGridViewTextBoxColumn";
+            this.fullNameDataGridViewTextBoxColumn.ReadOnly = true;
             this.fullNameDataGridViewTextBoxColumn.Width = 150;
             // 
             // birthDateDataGridViewTextBoxColumn
@@ -107,12 +111,14 @@
             this.birthDateDataGridViewTextBoxColumn.DataPropertyName = "BirthDate";
             this.birthDateDataGridViewTextBoxColumn.HeaderText = "Дата рождения";
             this.birthDateDataGridViewTextBoxColumn.Name = "birthDateDataGridViewTextBoxColumn";
+            this.birthDateDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // iNNDataGridViewTextBoxColumn
             // 
             this.iNNDataGridViewTextBoxColumn.DataPropertyName = "INN";
             this.iNNDataGridViewTextBoxColumn.HeaderText = "ИНН";
             this.iNNDataGridViewTextBoxColumn.Name = "iNNDataGridViewTextBoxColumn";
+            this.iNNDataGridViewTextBoxColumn.ReadOnly = true;
             this.iNNDataGridViewTextBoxColumn.Width = 120;
             // 
             // pensionCertificateNumberDataGridViewTextBoxColumn
@@ -120,14 +126,16 @@
             this.pensionCertificateNumberDataGridViewTextBoxColumn.DataPropertyName = "PensionCertificateNumber";
             this.pensionCertificateNumberDataGridViewTextBoxColumn.HeaderText = "№ пенсионного страхового свидетельства";
             this.pensionCertificateNumberDataGridViewTextBoxColumn.Name = "pensionCertificateNumberDataGridViewTextBoxColumn";
+            this.pensionCertificateNumberDataGridViewTextBoxColumn.ReadOnly = true;
             this.pensionCertificateNumberDataGridViewTextBoxColumn.Width = 180;
             // 
             // passportDataDataGridViewTextBoxColumn
             // 
+            this.passportDataDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.passportDataDataGridViewTextBoxColumn.DataPropertyName = "PassportData";
             this.passportDataDataGridViewTextBoxColumn.HeaderText = "Паспортные данные";
             this.passportDataDataGridViewTextBoxColumn.Name = "passportDataDataGridViewTextBoxColumn";
-            this.passportDataDataGridViewTextBoxColumn.Width = 145;
+            this.passportDataDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // employeesBindingSource
             // 
@@ -155,7 +163,9 @@
             this.descriptionDataGridViewTextBoxColumn});
             this.dataGridView_Job.DataSource = this.jobBindingSource;
             this.dataGridView_Job.Location = new System.Drawing.Point(6, 19);
+            this.dataGridView_Job.MultiSelect = false;
             this.dataGridView_Job.Name = "dataGridView_Job";
+            this.dataGridView_Job.ReadOnly = true;
             this.dataGridView_Job.Size = new System.Drawing.Size(738, 225);
             this.dataGridView_Job.TabIndex = 1;
             // 
@@ -164,6 +174,7 @@
             this.iDDataGridViewTextBoxColumn1.DataPropertyName = "ID";
             this.iDDataGridViewTextBoxColumn1.HeaderText = "ID";
             this.iDDataGridViewTextBoxColumn1.Name = "iDDataGridViewTextBoxColumn1";
+            this.iDDataGridViewTextBoxColumn1.ReadOnly = true;
             this.iDDataGridViewTextBoxColumn1.Visible = false;
             // 
             // employeeIDDataGridViewTextBoxColumn
@@ -171,6 +182,7 @@
             this.employeeIDDataGridViewTextBoxColumn.DataPropertyName = "EmployeeID";
             this.employeeIDDataGridViewTextBoxColumn.HeaderText = "EmployeeID";
             this.employeeIDDataGridViewTextBoxColumn.Name = "employeeIDDataGridViewTextBoxColumn";
+            this.employeeIDDataGridViewTextBoxColumn.ReadOnly = true;
             this.employeeIDDataGridViewTextBoxColumn.Visible = false;
             // 
             // startDateDataGridViewTextBoxColumn
@@ -178,6 +190,7 @@
             this.startDateDataGridViewTextBoxColumn.DataPropertyName = "StartDate";
             this.startDateDataGridViewTextBoxColumn.HeaderText = "Дата начала работы";
             this.startDateDataGridViewTextBoxColumn.Name = "startDateDataGridViewTextBoxColumn";
+            this.startDateDataGridViewTextBoxColumn.ReadOnly = true;
             this.startDateDataGridViewTextBoxColumn.Width = 150;
             // 
             // endDateDataGridViewTextBoxColumn
@@ -185,14 +198,16 @@
             this.endDateDataGridViewTextBoxColumn.DataPropertyName = "EndDate";
             this.endDateDataGridViewTextBoxColumn.HeaderText = "Дата окончания работы";
             this.endDateDataGridViewTextBoxColumn.Name = "endDateDataGridViewTextBoxColumn";
+            this.endDateDataGridViewTextBoxColumn.ReadOnly = true;
             this.endDateDataGridViewTextBoxColumn.Width = 175;
             // 
             // descriptionDataGridViewTextBoxColumn
             // 
+            this.descriptionDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
             this.descriptionDataGridViewTextBoxColumn.HeaderText = "Описание";
             this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
-            this.descriptionDataGridViewTextBoxColumn.Width = 370;
+            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // jobBindingSource
             // 
@@ -340,6 +355,8 @@
             this.Controls.Add(this.groupBox_Job);
             this.Controls.Add(this.groupBox_Employee);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "MainWindow";
             this.Text = "Меню";
             this.Load += new System.EventHandler(this.MainWindow_Load);
@@ -365,17 +382,6 @@
         private System.Windows.Forms.BindingSource jobBindingSource;
         private System.Windows.Forms.GroupBox groupBox_Employee;
         private System.Windows.Forms.GroupBox groupBox_Job;
-        private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn employeeIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn startDateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn endDateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fullNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn birthDateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn iNNDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn pensionCertificateNumberDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn passportDataDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button button_EmployeeAdd;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button button_EmployeeEdit;
@@ -384,6 +390,17 @@
         private System.Windows.Forms.Button button_JobDelete;
         private System.Windows.Forms.Button button_JobEdit;
         private System.Windows.Forms.Button button_JobAdd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fullNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn birthDateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn iNNDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pensionCertificateNumberDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn passportDataDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn employeeIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn startDateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn endDateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
     }
 }
 

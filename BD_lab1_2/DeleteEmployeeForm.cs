@@ -19,7 +19,7 @@ namespace BD_lab1_2
             if (employee != null)
             {
                 textBox_FullName.Text = employee.FullName;
-                dateTimePicker_BirthDate.Value = employee.BirthDate;
+                dateTimePicker_BirthDate.Value = employee.BirthDate.Date;
                 textBox_INN.Text = employee.INN;
                 textBox_PensionCertificate.Text = employee.PensionCertificateNumber;
                 textBox_PassportData.Text = employee.PassportData;
@@ -78,6 +78,11 @@ namespace BD_lab1_2
 
                 // Удаляем работника (связанные записи удалятся автоматически благодаря каскадному удалению)
                 employeeToDelete.Delete();
+
+                dataSet.Employees.AcceptChanges();
+                dataSet.Job.AcceptChanges();
+                dataSet.WriteXml("DataSet.xml");
+                Console.Write("Saved\n");
 
                 this.DialogResult = DialogResult.OK;
                 this.Close();

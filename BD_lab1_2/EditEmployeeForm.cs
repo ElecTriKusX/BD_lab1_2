@@ -19,7 +19,7 @@ namespace BD_lab1_2
             if (employee != null)
             {
                 textBox_FullName.Text = employee.FullName;
-                dateTimePicker_BirthDate.Value = employee.BirthDate;
+                dateTimePicker_BirthDate.Value = employee.BirthDate.Date;
                 textBox_INN.Text = employee.INN;
                 textBox_PensionCertificate.Text = employee.PensionCertificateNumber;
                 textBox_PassportData.Text = employee.PassportData;
@@ -81,10 +81,11 @@ namespace BD_lab1_2
                 return;
             }
 
-            // Проверка паспортных данных
-            if (string.IsNullOrWhiteSpace(textBox_PassportData.Text))
+            // Проверка паспортных данных (10 цифр)
+            if (string.IsNullOrWhiteSpace(textBox_PassportData.Text) || textBox_PassportData.Text.Length != 10 ||
+                !System.Text.RegularExpressions.Regex.IsMatch(textBox_PassportData.Text, @"^\d+$"))
             {
-                MessageBox.Show("Паспортные данные обязательны для заполнения!", "Ошибка",
+                MessageBox.Show("Паспортные данные должны содержать ровно 10 цифр!", "Ошибка",
                               MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 textBox_PassportData.Focus();
                 return;
@@ -95,11 +96,16 @@ namespace BD_lab1_2
                 // Редактирование существующей записи сотрудника
                 employeeToEdit.BeginEdit();
                 employeeToEdit.FullName = textBox_FullName.Text.Trim();
-                employeeToEdit.BirthDate = dateTimePicker_BirthDate.Value;
+                employeeToEdit.BirthDate = dateTimePicker_BirthDate.Value.Date;
                 employeeToEdit.INN = textBox_INN.Text.Trim();
                 employeeToEdit.PensionCertificateNumber = textBox_PensionCertificate.Text.Trim();
                 employeeToEdit.PassportData = textBox_PassportData.Text.Trim();
                 employeeToEdit.EndEdit();
+
+                dataSet.Employees.AcceptChanges();
+                dataSet.Job.AcceptChanges();
+                dataSet.WriteXml("DataSet.xml");
+                Console.Write("Saved\n");
 
                 this.DialogResult = DialogResult.OK;
                 this.Close();

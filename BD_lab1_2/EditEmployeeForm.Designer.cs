@@ -83,6 +83,7 @@ namespace BD_lab1_2
             this.textBox_FullName.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox_FullName.Location = new System.Drawing.Point(203, 43);
             this.textBox_FullName.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
+            this.textBox_FullName.MaxLength = 120;
             this.textBox_FullName.Name = "textBox_FullName";
             this.textBox_FullName.Size = new System.Drawing.Size(194, 20);
             this.textBox_FullName.TabIndex = 0;
@@ -116,6 +117,7 @@ namespace BD_lab1_2
             this.textBox_INN.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox_INN.Location = new System.Drawing.Point(203, 103);
             this.textBox_INN.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
+            this.textBox_INN.MaxLength = 12;
             this.textBox_INN.Name = "textBox_INN";
             this.textBox_INN.Size = new System.Drawing.Size(194, 20);
             this.textBox_INN.TabIndex = 2;
@@ -137,6 +139,7 @@ namespace BD_lab1_2
             this.textBox_PassportData.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox_PassportData.Location = new System.Drawing.Point(203, 163);
             this.textBox_PassportData.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
+            this.textBox_PassportData.MaxLength = 10;
             this.textBox_PassportData.Name = "textBox_PassportData";
             this.textBox_PassportData.Size = new System.Drawing.Size(194, 20);
             this.textBox_PassportData.TabIndex = 4;
@@ -158,6 +161,7 @@ namespace BD_lab1_2
             this.textBox_PensionCertificate.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox_PensionCertificate.Location = new System.Drawing.Point(203, 133);
             this.textBox_PensionCertificate.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
+            this.textBox_PensionCertificate.MaxLength = 11;
             this.textBox_PensionCertificate.Name = "textBox_PensionCertificate";
             this.textBox_PensionCertificate.Size = new System.Drawing.Size(194, 20);
             this.textBox_PensionCertificate.TabIndex = 3;
@@ -216,7 +220,6 @@ namespace BD_lab1_2
             // 
             // dateTimePicker_BirthDate
             // 
-            this.dateTimePicker_BirthDate.Checked = false;
             this.dateTimePicker_BirthDate.CustomFormat = "";
             this.dateTimePicker_BirthDate.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dateTimePicker_BirthDate.Location = new System.Drawing.Point(203, 73);

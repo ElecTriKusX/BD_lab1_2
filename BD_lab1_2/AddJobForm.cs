@@ -83,8 +83,8 @@ namespace BD_lab1_2
                 DataSet_main.JobRow newJob = dataSet.Job.NewJobRow();
 
                 newJob.EmployeeID = selectedEmployee.ID;
-                newJob.StartDate = dateTimePicker_StartDate.Value;
-                newJob.EndDate = dateTimePicker_EndDate.Value;
+                newJob.StartDate = dateTimePicker_StartDate.Value.Date;
+                newJob.EndDate = dateTimePicker_EndDate.Value.Date;
 
                 // Описание - опциональное поле
                 if (!string.IsNullOrWhiteSpace(textBox_Description.Text))
@@ -93,6 +93,11 @@ namespace BD_lab1_2
                     newJob.SetDescriptionNull(); // Явно устанавливаем NULL
 
                 dataSet.Job.AddJobRow(newJob);
+
+                dataSet.Employees.AcceptChanges();
+                dataSet.Job.AcceptChanges();
+                dataSet.WriteXml("DataSet.xml");
+                Console.Write("Saved\n");
 
                 this.DialogResult = DialogResult.OK;
                 this.Close();

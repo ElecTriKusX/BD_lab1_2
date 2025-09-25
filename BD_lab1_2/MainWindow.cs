@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,8 +14,21 @@ namespace BD_lab1_2
     public partial class MainWindow : Form
     {
         public MainWindow()
-        {
+        {   
             InitializeComponent();
+
+            try
+            {
+                dataSet_main.ReadXml("DataSet.xml");
+                Console.WriteLine("Loaded");
+
+                employeesBindingSource.ResetBindings(false);
+                jobBindingSource.ResetBindings(false);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

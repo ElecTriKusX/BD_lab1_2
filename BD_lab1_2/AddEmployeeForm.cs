@@ -69,10 +69,11 @@ namespace BD_lab1_2
                 return;
             }
 
-            // Проверка паспортных данных
-            if (string.IsNullOrWhiteSpace(textBox_PassportData.Text))
+            // Проверка паспортных данных (10 цифр)
+            if (string.IsNullOrWhiteSpace(textBox_PassportData.Text) || textBox_PassportData.Text.Length != 10 ||
+                !System.Text.RegularExpressions.Regex.IsMatch(textBox_PassportData.Text, @"^\d+$"))
             {
-                MessageBox.Show("Паспортные данные обязательны для заполнения!", "Ошибка",
+                MessageBox.Show("Паспортные данные должны содержать ровно 10 цифр!", "Ошибка",
                               MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 textBox_PassportData.Focus();
                 return;
@@ -84,13 +85,18 @@ namespace BD_lab1_2
                 DataSet_main.EmployeesRow newEmployee = dataSet.Employees.NewEmployeesRow();
 
                 newEmployee.FullName = textBox_FullName.Text.Trim();
-                newEmployee.BirthDate = dateTimePicker_BirthDate.Value;
+                newEmployee.BirthDate = dateTimePicker_BirthDate.Value.Date;
                 newEmployee.INN = textBox_INN.Text.Trim();
                 newEmployee.PensionCertificateNumber = textBox_PensionCertificate.Text.Trim();
                 newEmployee.PassportData = textBox_PassportData.Text.Trim();
 
                 // Добавление в DataSet
                 dataSet.Employees.AddEmployeesRow(newEmployee);
+
+                dataSet.Employees.AcceptChanges();
+                dataSet.Job.AcceptChanges();
+                dataSet.WriteXml("DataSet.xml");
+                Console.Write("Saved\n");
 
                 this.DialogResult = DialogResult.OK;
                 this.Close();

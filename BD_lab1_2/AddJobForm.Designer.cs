@@ -139,6 +139,7 @@ namespace BD_lab1_2
             this.textBox_Description.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
             this.textBox_Description.Multiline = true;
             this.textBox_Description.Name = "textBox_Description";
+            this.textBox_Description.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox_Description.Size = new System.Drawing.Size(194, 72);
             this.textBox_Description.TabIndex = 4;
             // 

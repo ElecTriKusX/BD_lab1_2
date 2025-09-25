@@ -215,7 +215,6 @@ namespace BD_lab1_2
             // 
             // dateTimePicker_BirthDate
             // 
-            this.dateTimePicker_BirthDate.Checked = false;
             this.dateTimePicker_BirthDate.CustomFormat = "";
             this.dateTimePicker_BirthDate.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dateTimePicker_BirthDate.Location = new System.Drawing.Point(203, 73);
