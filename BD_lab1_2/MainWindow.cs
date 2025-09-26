@@ -43,6 +43,13 @@ namespace BD_lab1_2
         {
             // Добавляем обработчик события выбора строки в таблице работников
             dataGridView_Employee.SelectionChanged += DataGridView_Employee_SelectionChanged;
+
+            // Просто выбираем первую строку после загрузки
+            if (dataGridView_Employee.Rows.Count > 0)
+            {
+                dataGridView_Employee.Rows[1].Selected = true;
+                dataGridView_Employee.Rows[0].Selected = true;
+            }
         }
 
         private void DataGridView_Employee_SelectionChanged(object sender, EventArgs e)
