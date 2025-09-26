@@ -14,6 +14,12 @@ namespace BD_lab1_2
             this.dataSet = dataSet;
 
             dateTimePicker_BirthDate.MaxDate = DateTime.Today;
+
+            textBox_INN.KeyPress += TextBox_DigitsOnly_KeyPress;
+            textBox_PensionCertificate.KeyPress += TextBox_DigitsOnly_KeyPress;
+            textBox_PassportData.KeyPress += TextBox_DigitsOnly_KeyPress;
+            textBox_FullName.KeyPress += TextBox_FullName_KeyPress;
+
         }
 
         private void button_Cancel_Click(object sender, EventArgs e)
@@ -109,6 +115,32 @@ namespace BD_lab1_2
                               MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+        }
+
+        // Обработчик события KeyPress для полей с цифрами
+        private void TextBox_DigitsOnly_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Разрешаем Backspace, Delete и цифры
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Отменяем ввод символа
+            }
+        }
+        private void TextBox_FullName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Разрешаем: буквы (русские и английские), пробел, дефис, апостроф, Backspace
+            if (char.IsLetter(e.KeyChar) ||
+                e.KeyChar == ' ' ||
+                e.KeyChar == '-' ||
+                e.KeyChar == '\'' ||
+                char.IsControl(e.KeyChar))
+            {
+                e.Handled = false; // Разрешаем ввод
+            }
+            else
+            {
+                e.Handled = true; // Запрещаем ввод
+            }
         }
 
         private void AddEmployeeForm_Load(object sender, EventArgs e)

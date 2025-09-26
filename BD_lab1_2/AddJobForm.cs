@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Data;
 using System.Drawing;
-using System.Runtime.InteropServices.ComTypes;
 using System.Windows.Forms;
 
 namespace BD_lab1_2
@@ -17,12 +16,14 @@ namespace BD_lab1_2
             this.dataSet = dataSet;
             this.selectedEmployee = employee;
 
-            // Если передан работник, устанавливаем его ФИО
-            if (employee != null)
+            // Проверяем, что работник передан
+            if (employee == null)
             {
-                textBox_EmployeeName.Text = employee.FullName;
-                textBox_EmployeeName.ReadOnly = true;
-                textBox_EmployeeName.BackColor = SystemColors.Control;
+                MessageBox.Show("Не выбран работник! Пожалуйста, выберите работника в главном окне.", "Ошибка",
+                              MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.DialogResult = DialogResult.Cancel;
+                this.Close();
+                return;
             }
         }
 
@@ -34,14 +35,6 @@ namespace BD_lab1_2
 
         private void button_Save_Click(object sender, EventArgs e)
         {
-            // Проверка выбора работника
-            if (selectedEmployee == null)
-            {
-                MessageBox.Show("Не выбран работник!", "Ошибка",
-                              MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
             // Проверка даты начала 
             if (dateTimePicker_StartDate.Value == DateTime.MinValue)
             {
@@ -110,31 +103,10 @@ namespace BD_lab1_2
             }
         }
 
-        private void button_SelectEmployee_Click(object sender, EventArgs e)
-        {
-            using (var selectForm = new SelectEmployeeForm(dataSet))
-            {
-                if (selectForm.ShowDialog() == DialogResult.OK && selectForm.SelectedEmployee != null)
-                {
-                    selectedEmployee = selectForm.SelectedEmployee;
-                    textBox_EmployeeName.Text = selectedEmployee.FullName;
-                    textBox_EmployeeName.ReadOnly = true;
-                    textBox_EmployeeName.BackColor = SystemColors.Control;
-                }
-            }
-        }
-
         private void AddJobForm_Load(object sender, EventArgs e)
         {
             // Установка фокуса на первое поле при загрузке формы
-            if (selectedEmployee == null)
-            {
-                button_SelectEmployee.Focus();
-            }
-            else
-            {
-                dateTimePicker_StartDate.Focus();
-            }
+            dateTimePicker_StartDate.Focus();
         }
     }
 }
