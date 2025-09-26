@@ -135,11 +135,11 @@ namespace BD_lab1_2
                 e.KeyChar == '\'' ||
                 char.IsControl(e.KeyChar))
             {
-                e.Handled = false; // Разрешаем ввод
+                e.Handled = false; 
             }
             else
             {
-                e.Handled = true; // Запрещаем ввод
+                e.Handled = true; 
             }
         }
 
